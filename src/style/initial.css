@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.context{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    padding:10px;    
+}
+
+.main-container{
+    display: flex;
+    height: 100%;
+}
+.nav-container{
+    flex:2.2;
+}
+
+.right-container{
+    flex:6;
+}

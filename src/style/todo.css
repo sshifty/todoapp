@@ -1,0 +1,6 @@
+.item-div{
+    display: flex;
+    margin-bottom: 10px;
+    padding:10px;
+    gap:10px;
+}
