@@ -1,0 +1,46 @@
+ /*Create Project Modal*/
+
+ .create-project-header{
+    display:flex;
+    justify-content: space-between;
+    padding:10px
+  }
+  .modal-inside-div{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+  .text-container{
+      padding:10px;
+          
+  }
+  .project-textarea{
+      resize:none;
+      width:100%;
+      height: 5rem;      
+      border:none;
+      
+  }
+  .project-textarea:focus{
+      outline:none;
+  }
+  .btn-submit-project{      
+      margin-left: 10px;
+      align-self: flex-start;
+      margin-bottom: 10px;
+      padding:0.5rem 1.1rem;
+      
+  }
+  .project-form{
+    margin-bottom: auto;  
+  }
+
+  textarea:focus{
+    outline:none;
+}
+
+  
+
+  
+  

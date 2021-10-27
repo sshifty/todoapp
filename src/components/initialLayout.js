@@ -1,4 +1,6 @@
-import logo from '../images/logo.png'
+import logo from '../images/logo.png';
+
+
 
 export default (function(){
     const body=document.querySelector("body");
@@ -8,6 +10,10 @@ export default (function(){
     const mainContainer=document.createElement("div");
     const navContainer=document.createElement("div");
     const rightContainer=document.createElement("div");
+    
+    //basicModal(addProject);
+    
+    
    
 
     //textContent

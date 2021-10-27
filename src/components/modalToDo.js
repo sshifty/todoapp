@@ -1,4 +1,5 @@
 import modalToDo from '../style/modalToDo.css';
+import {projects} from './projects';
 
 function setAttributes(el, attrs) {
     for(var key in attrs) {
@@ -6,7 +7,9 @@ function setAttributes(el, attrs) {
     }
   }
 
-const makeForm=(modalContent,close,modal)=>{
+
+
+const makeForm=(modalContent,close,modal,addTask,project,displayToDos,layout)=>{
     const form=document.createElement("form");
     const descText=document.createElement("textarea");
     const detailsText=document.createElement("textarea");
@@ -25,7 +28,7 @@ const makeForm=(modalContent,close,modal)=>{
     const priorityContainer=document.createElement("div");
     const addButton= document.createElement("button");
     const priorLeft=document.createElement("div");
-    let ok=false;
+   
 
     //text
     createText.textContent="Create"
@@ -44,6 +47,7 @@ const makeForm=(modalContent,close,modal)=>{
     detailsText.setAttribute("required",'');    
     detailsText.setAttribute("placeholder","Description");
     date.setAttribute("type","date");
+    date.setAttribute("value","2020-07-22");
     buttonLow.setAttribute("type","radio");
     buttonMedium.setAttribute("type","radio");
     buttonHigh.setAttribute("type","radio");
@@ -52,7 +56,8 @@ const makeForm=(modalContent,close,modal)=>{
         "id":"create-new-Low",
         "name":"create-new-priority",
         "value":"low",
-        "required":""
+        "required":"",
+        "checked":"",        
 
     });
     setAttributes(buttonMedium,{
@@ -71,7 +76,7 @@ const makeForm=(modalContent,close,modal)=>{
     });
     setAttributes(labelLow,{
         "for":"create-new-Low",
-        "class":"create-priority create-low",
+        "class":"create-priority create-low create-low-active",
 
     });
     setAttributes(labelMedium,{
@@ -126,38 +131,41 @@ const makeForm=(modalContent,close,modal)=>{
         labelLow.classList.remove("create-low-active");
 
     });
+    
     let priority;
     form.onsubmit=function(event){
         event.preventDefault();
-         priority= document.querySelector( 'input[name="create-new-priority"]:checked').value;           
-        ok=true;
-        console.log(ok)
-        return true;  
+        priority= document.querySelector( 'input[name="create-new-priority"]:checked').value;           
+        console.log("XD")
+        let newObj;
+        //need local storage
+        newObj=addTask(descText.value,detailsText.value,date.value,priority);
+        project.todos.push(newObj);
+        
+        console.log(project);
+        console.log(projects);    
+        form.reset();
+        modal.style.display="none";      
+        displayToDos(layout,project.todos)    
        
-    }
-    console.log("im out")
-    if(ok){
-        return {
-            descText,
-            detailsText,
-            date,
-            priority
-    
-        }
-    }
+    }    
+
     
 }
 
-export default function getModal(btn){
+export  default function getModal(project,btn,addTask,displayToDos,layout){
+
+    
+   
     //create
     const modal=document.createElement("div");
     const modalContent=document.createElement("div");
     const close=document.createElement("span");
    
-    const text=document.createElement("p");
+    
     const body=document.querySelector("body");
 
-    text.textContent="dsfdssfdfds";
+    
     close.innerHTML="&times";
 
 
@@ -168,9 +176,12 @@ export default function getModal(btn){
 
     //append
     body.appendChild(modal);
-    modal.appendChild(modalContent);
-    let newObj=makeForm(modalContent,close,modal);
-    console.log(newObj);
+    modal.appendChild(modalContent);   
+    
+   makeForm(modalContent,close,modal,addTask,project,displayToDos,layout);
+    
+    
+    
 
     btn.addEventListener("click", function () {
         modal.style.display = "block";
@@ -182,6 +193,5 @@ export default function getModal(btn){
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
-    if(newObj) return newObj;
+    }    
 }

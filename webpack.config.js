@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const json5 = require('json5');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
@@ -26,6 +27,13 @@ const config = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.json5$/i,
+        type: 'json',
+        parser: {
+          parse: json5.parse,
+        },
+      }
     ],
   },  
 };

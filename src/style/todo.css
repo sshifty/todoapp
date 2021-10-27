@@ -1,6 +1,75 @@
+:root{
+    
+    --item-background:#EEEEEE;
+    --details-color:#79B4B7;
+    --delete-button:#FF5151;
+}
+
 .item-div{
     display: flex;
     margin-bottom: 10px;
     padding:10px;
     gap:10px;
+    justify-content: space-between;
+    background-color: var(--item-background);
+}
+
+.item-details-div{
+    padding:1px 4px;
+    border:2px solid var(--details-color);
+    color:var(--details-color);
+    font-size: 1.15em;
+    cursor: pointer;
+    border-radius: 4px;    
+    
+}
+
+.todo-btn{
+    padding:3px 4px;
+    border:2px solid var(--details-color);
+    color:var(--details-color);
+    font-size: 1.15em;
+    cursor: pointer;
+    border-radius: 4px;    
+    text-transform: uppercase;
+}
+
+.btn-delete{
+    color:var(--delete-button);
+    border-color: var(--delete-button);
+}
+
+.button-container{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.item-desc{
+    margin-right: auto;
+    height: fit-content;
+    align-self: center;
+    font-size: 1.1em;
+    font-weight: 550;
+}
+.item-date{
+    height: fit-content;
+    align-self: center;
+    font-size: 1.1em;
+    text-align: center;
+    line-height: 100%;
+}
+
+.prior-red{
+    border-left: 4px solid red;
+}
+.prior-medium{
+    border-left: 4px solid orange;
+}
+.prior-low{
+    border-left:4px solid green;
+}
+
+.item-img{
+    cursor: pointer;
 }

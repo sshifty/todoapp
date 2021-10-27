@@ -35,7 +35,7 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+  } 
 
   .create-header{
       display:flex;
@@ -105,10 +105,12 @@
   .desc-text,
   .details-text{
       width:100%;
+      resize:none;
+      border:none;
   };
 
   
+
  
-  
   
   
