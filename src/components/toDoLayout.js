@@ -57,7 +57,8 @@ export const displayToDos=(layout,todos)=>{
                
                 projects.map(proj=>{
                     proj.todos.map(todo=>{
-                        if(todo===item){
+                        if(JSON.stringify(todo) === JSON.stringify(item)){
+                            console.log("im here")
                             showDetails(item,proj.name);
                         }
                     })
@@ -68,7 +69,7 @@ export const displayToDos=(layout,todos)=>{
                 console.log("edit")   
                 projects.map(proj=>{
                     proj.todos.find(todo=>{
-                        if(todo===item){
+                        if(JSON.stringify(todo) === JSON.stringify(item)){
                             makeForm("edit",addTask,todo,displayToDos,layout)
                         }
                     })
@@ -99,9 +100,15 @@ export const displayToDos=(layout,todos)=>{
     }
     
 }
-export default function toDoLayout(project){ 
+export default function toDoLayout(projectName){ 
     let projects=searchLocalProject();     
-   
+    let project;
+    projects.map((proj,index)=>{
+        if(proj.name===projectName){
+            project=projects[index];
+        }
+    })
+
     const ul=document.querySelector(".project-list");
     const layout=document.querySelector(".right-container");    
     const addToDo=document.createElement("button");    

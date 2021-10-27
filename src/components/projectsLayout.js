@@ -5,9 +5,9 @@ import {createProject} from './testForm';
 import { searchLocalProject } from './projects';
 import {displayHome} from './displayHome';
 
-export const displayProjects=(ul)=>{
-    let projects=searchLocalProject();
-console.log(projects);
+export const displayProjects=(ul,projects)=>{
+    
+    console.log(projects);
     ul.innerHTML='';
     projects.forEach((proj,index)=>{        
         let li=document.createElement("li");
@@ -16,7 +16,7 @@ console.log(projects);
         ul.appendChild(li);     
         li.addEventListener('click',function(){
             console.log(projects)
-            toDoLayout(proj);
+            toDoLayout(proj.name);
            
         })   
     });
@@ -29,7 +29,7 @@ console.log(projects);
 export default (function(){
     //query
     
-   
+    let projects=searchLocalProject();
     const navContainer=document.querySelector(".nav-container");
     //create
     const homeText=document.createElement("h2");
@@ -53,7 +53,7 @@ export default (function(){
     //append
     
     navContainer.append(homeText,projectText,ul);
-    displayProjects(ul);
+    displayProjects(ul,projects);
     navContainer.appendChild(addButton);
 
     addButton.addEventListener("click",function(){
