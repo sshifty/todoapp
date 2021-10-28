@@ -5,9 +5,8 @@ import {createProject} from './testForm';
 import { searchLocalProject } from './projects';
 import {displayHome} from './displayHome';
 
-export const displayProjects=(ul,projects)=>{
+export const displayProjects=(ul,projects)=>{    
     
-    console.log(projects);
     ul.innerHTML='';
     projects.forEach((proj,index)=>{        
         let li=document.createElement("li");
@@ -15,7 +14,7 @@ export const displayProjects=(ul,projects)=>{
         li.textContent=proj.name;        
         ul.appendChild(li);     
         li.addEventListener('click',function(){
-            console.log(projects)
+            
             toDoLayout(proj.name);
            
         })   
@@ -38,7 +37,7 @@ export default (function(){
     const addButton=document.createElement("button");
     addButton.classList.add("btn-add-project");
     basicModal();
-    
+    displayHome();
    
     //textContent
     homeText.textContent="Home";

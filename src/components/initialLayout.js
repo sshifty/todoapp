@@ -2,6 +2,9 @@ import logo from '../images/logo.png';
 
 
 
+
+
+
 export default (function(){
     const body=document.querySelector("body");
     const context=document.createElement("div");
@@ -33,6 +36,7 @@ export default (function(){
     context.append(header,mainContainer);
     header.appendChild(headerIMG);
     mainContainer.append(navContainer,rightContainer);
+    
     
     
 

@@ -4,10 +4,8 @@ import { searchLocalProject } from './projects';
 
 export const displayHome=()=>{
     const layout=document.querySelector(".right-container"); 
-    let projects=searchLocalProject(); 
-    console.log(projects)
-    let homeContainer=[];
-    console.log(projects)
+    let projects=searchLocalProject();     
+    let homeContainer=[];    
     layout.innerHTML="";
     projects.map(proj=>{
        // console.log(proj.todos)
@@ -29,8 +27,7 @@ export const displayHome=()=>{
         }
         return 0;
 
-    })
-    console.log(homeContainer)
+    })   
     displayToDos(layout,homeContainer);
 
 }

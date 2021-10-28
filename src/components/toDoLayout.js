@@ -58,7 +58,7 @@ export const displayToDos=(layout,todos)=>{
                 projects.map(proj=>{
                     proj.todos.map(todo=>{
                         if(JSON.stringify(todo) === JSON.stringify(item)){
-                            console.log("im here")
+                            
                             showDetails(item,proj.name);
                         }
                     })
@@ -66,7 +66,7 @@ export const displayToDos=(layout,todos)=>{
                 
             })
             itemEdit.addEventListener("click",function(){  
-                console.log("edit")   
+                  
                 projects.map(proj=>{
                     proj.todos.find(todo=>{
                         if(JSON.stringify(todo) === JSON.stringify(item)){

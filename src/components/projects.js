@@ -42,8 +42,7 @@ export  const makeProject=name=>{
 export function searchLocalProject(){
      
     if(window.localStorage.getItem('todoProjects')){
-        projects=JSON.parse(localStorage.getItem('todoProjects'));
-        console.log(projects)
+        projects=JSON.parse(localStorage.getItem('todoProjects'));        
     }else{
         window.localStorage.setItem('todoProjects',JSON.stringify(projects));
     }

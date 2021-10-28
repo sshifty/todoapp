@@ -29,8 +29,20 @@
       margin-left: 10px;
       align-self: flex-start;
       margin-bottom: 10px;
-      padding:0.5rem 1.1rem;
-      
+      padding:0.5rem 1rem;
+      border:2px solid var(--details-color);
+      color:var(--details-color);
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 10px;      
+  }
+  .add-btn{
+      padding:0.1rem 1rem;
+      border:2px solid var(--details-color);
+      color:var(--details-color);
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 10px;   
   }
   .project-form{
     margin-bottom: auto;  
@@ -38,7 +50,19 @@
 
   textarea:focus{
     outline:none;
-}
+  }
+
+  .detail-div{
+    padding:15px;
+    
+    width:80%
+  }
+  .det-container{
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: space-between;
+    padding-right: 20px;
+  }
 
   
 

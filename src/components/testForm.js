@@ -22,7 +22,34 @@ export const showDetails=(todos,name)=>{
     const priority=document.createElement("p");
     const projectName=document.createElement("p");
 
+    const textProject=document.createElement("p");
+    const textDesc=document.createElement("p");
+    const textDetail=document.createElement("p");
+    const textDate=document.createElement("p");
+    const textPriority=document.createElement("p");
+    
+    const projContainer=document.createElement("div");
+    projContainer.classList.add("det-container");
+    const descContainer=document.createElement("div");
+    descContainer.classList.add("det-container");
+
+    const detailContainer=document.createElement("div");
+    detailContainer.classList.add("det-container");
+
+    const dateContainer=document.createElement("div");
+    dateContainer.classList.add("det-container");
+
+    const priorContainer=document.createElement("div");
+    priorContainer.classList.add("det-container");
+
+
     //textContent
+    textProject.textContent="Project:";
+    textDesc.textContent="Description:";
+    textDetail.textContent="Details:";
+    textDate.textContent="Date:";
+    textPriority.textContent="Priority";
+
     close.innerHTML="&times";
     projectName.textContent=name;
     desc.textContent=todos.desc;
@@ -33,9 +60,14 @@ export const showDetails=(todos,name)=>{
     modal.style.display="block";
 
     close.classList.add("close");
-
+    detailDiv.classList.add("detail-div");
     //append
-    detailDiv.append(projectName,desc,detail,date,priority);    
+    projContainer.append(textProject,projectName);
+    descContainer.append(textDesc,desc);
+    detailContainer.append(textDetail,detail);
+    dateContainer.append(textDate,date);
+    priorContainer.append(textPriority,priority);
+    detailDiv.append(projContainer,descContainer,detailContainer,dateContainer,priorContainer);    
     modalContent.append(close,detailDiv);
 
     close.onclick = function () {
@@ -45,7 +77,7 @@ export const showDetails=(todos,name)=>{
 }
 
 export const createProject=()=>{
-    projects=JSON.parse(localStorage.getItem('todoProjects'));
+    let projects=searchLocalProject();
     const modal=document.querySelector(".modal");
     const modalContent=document.querySelector(".modal-content");
     const close=document.createElement("span");
@@ -112,7 +144,7 @@ export const createProject=()=>{
         window.localStorage.setItem('todoProjects',JSON.stringify(projects));        
         projectForm.reset();
         modal.style.display="none";  
-        console.log(ul)
+        
         displayProjects(ul,projects);
         
     };
@@ -264,14 +296,14 @@ export const makeForm=(type,addTask,project,displayToDos,layout)=>{
             //need local storage
             newObj=addTask(descText.value,detailsText.value,date.value,priority);
             project.todos.push(newObj);
-            console.log(project)
+            
             projects.map((proj,index)=>{
                 if(project.name===proj.name){                    
                     projects[index]=project;
                 }
             })
             window.localStorage.setItem('todoProjects',JSON.stringify(projects));
-            console.log(projects);
+            
                 
             form.reset();
             modal.style.display="none";      
@@ -284,9 +316,9 @@ export const makeForm=(type,addTask,project,displayToDos,layout)=>{
         detailsText.value=project.detail;
         date.setAttribute("value",project.date)
         priority= project.prior;
-        console.log(project);
+        
         if(priority==="high"){
-            console.log("im high")
+            
             buttonHigh.setAttribute("checked","");            
             buttonMedium.removeAttribute("checked");
             buttonLow.removeAttribute("checked");
@@ -314,7 +346,7 @@ export const makeForm=(type,addTask,project,displayToDos,layout)=>{
         form.onsubmit=function(event){
             event.preventDefault();
             priority= document.querySelector( 'input[name="create-new-priority"]:checked').value;           
-            console.log(project)
+            
             let tempObj;
             
             projects.map((obj)=>{
@@ -326,7 +358,7 @@ export const makeForm=(type,addTask,project,displayToDos,layout)=>{
                         todo.detail=detailsText.value;
                         todo.date=date.value;
                         todo.prior=priority;
-                        console.log(project)
+                        
                     }
                 })
             });

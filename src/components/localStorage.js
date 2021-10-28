@@ -6,7 +6,7 @@ function saveProjectsToLocal(newItem){
     window.localStorage.setItem('localBooks',JSON.stringify(myLibrary));
       
 }
-function searchLocalProjects(){
+function searchLocalProject(){
     if(window.localStorage.getItem('localBooks')){
         myLibrary=JSON.parse(localStorage.getItem('localBooks'));
         listBooks();
