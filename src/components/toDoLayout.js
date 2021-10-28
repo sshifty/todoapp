@@ -142,7 +142,8 @@ export default function toDoLayout(projectName){
             }
         })
         window.localStorage.setItem('todoProjects',JSON.stringify(projects));
-        displayHome();        
+        displayHome();
+        displayProjects(ul,projects);        
         
     });
   
