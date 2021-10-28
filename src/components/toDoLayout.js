@@ -1,5 +1,4 @@
 import todo from '../style/todo.css';
-import modalToDo from './modalToDo';
 import bin from '../images/bin.png';
 import {makeForm} from './testForm';
 import {showDetails} from './testForm';
@@ -7,6 +6,7 @@ import {showDetails} from './testForm';
 import { displayProjects } from './projectsLayout';
 import edit from '../images/edit2.png';
 import { searchLocalProject } from './projects';
+import { displayHome } from './displayHome';
 
 
 const addTask=(desc,detail,date,prior)=>{
@@ -142,9 +142,9 @@ export default function toDoLayout(projectName){
             }
         })
         window.localStorage.setItem('todoProjects',JSON.stringify(projects));
-        displayProjects(ul,projects);
+        displayHome();        
         
-    })
+    });
   
     
     let todos=project.todos;    
