@@ -135,7 +135,12 @@ export default function toDoLayout(projectName){
         makeForm("create",addTask, project, displayToDos, layout);
     })
     deleteProject.addEventListener('click',function(){
-        projects.splice(index,1);
+        console.log(project)
+        projects.map((proj,index)=>{
+            if(JSON.stringify(proj) === JSON.stringify(project)){
+                projects.splice(index,1);
+            }
+        })
         window.localStorage.setItem('todoProjects',JSON.stringify(projects));
         displayProjects(ul,projects);
         
